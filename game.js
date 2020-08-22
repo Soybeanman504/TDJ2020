@@ -107,7 +107,6 @@ class Game {
         }
         if (phase==5 && (count % 200) == 50) {
             enemy.push({ name: 'sukuna', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
-            console.log('here');
         }
         for (let n = 0; n <= phase; ++n) {
             if (count >= 200 * n && (count % 100) == (50 + 15 * n) % 100) {
