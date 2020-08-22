@@ -19,7 +19,7 @@ class Game {
         canvas.width = width * 16;
         canvas.height = height * 16;
 
-        this.imageName = ['void', 'player', 'fairy', 'gameover', 'retry', 'enter'];
+        this.imageName = ['void', 'player', 'fairy', 'sukuna', 'gameover', 'retry', 'enter'];
         this.image = {};
         for (let n in this.imageName) {
             var char = this.imageName[n];
@@ -104,17 +104,22 @@ class Game {
         if ((count % 100) == 0) {
             enemy.unshift({name: 'fairy', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
         }
+        if (phase==5 && (count % 200) == 50) {
+            enemy.unshift({ name: 'sukuna', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
+            console.log('here');
+        }
         for (let n = 0; n <= phase; ++n) {
             if (count >= 200 * n && (count % 100) == (50 + 15 * n) % 100) {
                 enemy.unshift({ name: 'fairy', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
                 if (n == phase) {
                     ++phase;
+                    phase = Math.min(phase, 5);
                 }
             }
         }
 
         game.ImageClear(0, 0, w, h);
-
+        
         for (let n in enemy) {
             var name = enemy[n].name;
             var x = enemy[n].x;
@@ -122,8 +127,12 @@ class Game {
             var vx = enemy[n].vx;
             var vy = enemy[n].vy;
 
-            if (name = 'fairy') {
+            if (name == 'fairy') {
                 vx += Math.sin(count / 10);
+            } else if (name == 'sukuna') {
+                let a = Math.atan2((py - y), (px - x));
+                vx += Math.cos(a) * 2;
+                vy += Math.max(Math.sin(a), 0);
             }
 
             vy += 0.7;
@@ -189,13 +198,15 @@ class Game {
         
         if (score >= 1000) {
             tweetText += '1km越えはヤバいな…';
-        } else if (score >= 500) {
-            tweetText += 'まさに鬼…！';
         } else if (score >= 200) {
             tweetText += '競泳200m自由形泳ぎ切れる程度の体力。';
         } else if (score >= 100) {
-            tweetText += 'やるやん。今度俺にリベンジさせて。';
+            tweetText += 'まさに鬼…！';
         } else if (score >= 50) {
+            tweetText += 'Congratulation...!';
+        } else if (score >= 30) {
+            tweetText += 'やるやん。今度俺にリベンジさせて。';
+        } else if (score >= 20) {
             tweetText += 'まだいける…頑張れ！'
         } else {
             tweetText += '流れに逆わず何が天邪鬼だ…';
