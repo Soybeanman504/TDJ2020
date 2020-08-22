@@ -68,6 +68,7 @@ class Game {
 
         game.interval = null;
         game.count = 0;
+        game.phase = 0;
         game.enemy = [];
         game.player = { x: game.width * 8 - 16, y: game.height * 12 - 16, vx: 0, vy: 0 };
     }
@@ -105,7 +106,7 @@ class Game {
             enemy.unshift({name: 'fairy', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
         }
         if (phase==5 && (count % 200) == 50) {
-            enemy.unshift({ name: 'sukuna', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
+            enemy.push({ name: 'sukuna', x: Math.random() * (w - 32) + 16, y: -16, vx: 0, vy: 0 });
             console.log('here');
         }
         for (let n = 0; n <= phase; ++n) {
