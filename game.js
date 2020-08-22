@@ -6,7 +6,6 @@ window.onload = function () {
     var game = new Game(canvas, 16, 16, scoreElement);
 
     game.main();
-    console.log(document,scoreTweet);
 }
 
 class Game {
