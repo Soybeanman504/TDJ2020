@@ -60,7 +60,7 @@ class Game {
         window.addEventListener("keydown", keydown);
         window.addEventListener("keyup", keyup);
 
-        setTimeout(() => game.title(), 30);
+        setTimeout(() => game.title(), 100);
     }
 
     clear() {
