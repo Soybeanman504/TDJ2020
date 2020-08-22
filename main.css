@@ -1,0 +1,13 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+canvas#game {
+    width: 70vmin;
+    height: 70vmin;
+    image-rendering: pixelated; /* Crome */
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE */
+}
