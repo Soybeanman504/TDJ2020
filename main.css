@@ -1,15 +1,52 @@
 ﻿* {
+    position: relative;
     margin: 0;
     padding: 0;
 }
 
 canvas#game {
+    position: absolute;
     width: 70vmin;
     height: 70vmin;
+    top: 5vmin;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     image-rendering: pixelated; /* Crome */
     image-rendering: -moz-crisp-edges; /* Firefox */
     image-rendering: crisp-edges;
     -ms-interpolation-mode: nearest-neighbor; /* IE */
-    background-image: url('pool.png') ;
+    background-image: url('pool.png');
     background-size: contain;
+}
+
+p#title {
+    position: absolute;
+    top: 78vmin;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: xx-large;
+    text-align: center;
+}
+
+p#gameScore {
+    position: absolute;
+    top: 85vmin;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: x-large;
+    text-align: center;
+}
+
+#tweet-area {
+    position: absolute;
+    top: 90vmin;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: large;
+    width: 100%;
+    text-align: center;
 }

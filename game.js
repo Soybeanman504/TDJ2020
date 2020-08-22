@@ -19,7 +19,7 @@ class Game {
         canvas.width = width * 16;
         canvas.height = height * 16;
 
-        this.imageName = ['void', 'player', 'fairy', 'sukuna', 'gameover', 'retry', 'enter'];
+        this.imageName = ['void', 'player', 'fairy', 'sukuna', 'title', 'start', 'gameover', 'retry', 'enter'];
         this.image = {};
         for (let n in this.imageName) {
             var char = this.imageName[n];
@@ -60,7 +60,7 @@ class Game {
         window.addEventListener("keydown", keydown);
         window.addEventListener("keyup", keyup);
 
-        game.interval = setInterval(() => game.game(), 30);
+        setTimeout(() => game.title(), 30);
     }
 
     clear() {
@@ -71,6 +71,25 @@ class Game {
         game.phase = 0;
         game.enemy = [];
         game.player = { x: game.width * 8 - 16, y: game.height * 12 - 16, vx: 0, vy: 0 };
+    }
+
+    title() {
+        var game = this;
+        game.ImageClear(0, 0, game.width * 16, game.height * 16);
+        game.imagePut('title', false, 0, 0, 22, 14, 40, 32);
+        game.imagePut('start', false, 0, 0, 14, 8, 80, 160);
+
+        game.canvas.onclick = function () {
+            var xy = touchHandler(game.canvas, event);
+            var x = xy.x;
+            var y = xy.y;
+
+            if (rectOK(x, y, 80, 160, 112, 64)) {
+                game.canvas.onclick = null;
+                game.clear();
+                game.interval = setInterval(() => game.game(), 30);
+            }
+        }
     }
 
     //GAME
@@ -228,15 +247,11 @@ class Game {
                 game.clear();
                 game.interval = setInterval(() => game.game(), 30);
             } else if (rectOK(x, y, 136, 160, 112, 64)){
-                game.clear();
+                game.canvas.onclick = null;
+                game.title();
             }
         };
     }
-
-    button(event) {
-        var game = this;
-        
-    };
     
     imagePut(char, clear, sx, sy, w, h, dx, dy) {
         var game = this;
