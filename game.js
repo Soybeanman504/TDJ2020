@@ -248,7 +248,7 @@ class Game {
     }
 
     score() {
-        return Math.floor((this.count + this.height - this.player.y) / 30);
+        return Math.floor((this.count + this.height - this.player.y) / 30) + 7;
     }
 }
 
@@ -305,7 +305,7 @@ function setTweetButton(text) {
         {
             size: "large", //ボタンはでかく
             text: text, // 狙ったテキスト
-            hashtags: "ハッシュタグ", // ハッシュタグ
+            hashtags: "正邪のプール流れ", // ハッシュタグ
             url: "https://soybeanman504.github.io/TGJ2020/" // URL
         }
     );
