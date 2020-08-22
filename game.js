@@ -306,7 +306,7 @@ function setTweetButton(text) {
             size: "large", //ボタンはでかく
             text: text, // 狙ったテキスト
             hashtags: "ハッシュタグ", // ハッシュタグ
-            url: "http://256haruhi.dip.jp/uploader/files/TDJ2020/index.html" // URL
+            url: "https://soybeanman504.github.io/TGJ2020/" // URL
         }
     );
 }
