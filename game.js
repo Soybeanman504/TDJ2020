@@ -317,7 +317,7 @@ function setTweetButton(text) {
         {
             size: "large", //ボタンはでかく
             text: text, // 狙ったテキスト
-            hashtags: "正邪のプール流れ", // ハッシュタグ
+            hashtags: "東方ゲームジャム #正邪のプール流れ", // ハッシュタグ
             url: "https://soybeanman504.github.io/TGJ2020/" // URL
         }
     );
